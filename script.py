@@ -1,11 +1,12 @@
-# import time
+import time
 import requests
 import os
 # import datetime as dt
 # import telegram
 from apscheduler.schedulers.blocking import BlockingScheduler
 
-BOT_TOKEN = os.environ.get('BOT_TOKEN')
+# BOT_TOKEN = os.environ.get('BOT_TOKEN')
+BOT_TOKEN = "929958710:AAGXfScC4Egbh6_Fzh4JxWJ3K0ZXsaOXR7E"
 
 # checking status every 2 hours
 SLEEP_INTERVAL = 7200
@@ -22,9 +23,7 @@ def send_telegram(dollar):
     requests.get(f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage?chat_id={chat_viki}&text=Hallo Tiere!🐱🐰%20Dollar={dollar}.\nMehr%20unter%20https://crystalbank.com.ua/")
 
 
-# while True:
-@sched.scheduled_job('interval', minutes=1)
-def monitor():
+while True:
     sent_weekly = 0
     myResponse = requests.get(FINANCE_URL)
     if myResponse.status_code != 200:
@@ -40,7 +39,7 @@ def monitor():
         if bank["id"] == "7oiylpmiow8iy1smgg3":
             usd = float(bank["currencies"]["USD"]["ask"])
             send_telegram(usd)
-            
+
             #every monday
             # if dt.date.today().isoweekday() == 1:
             #     print("Sending weekly...")
@@ -53,5 +52,5 @@ def monitor():
                 print("Sending message...")
                 send_telegram(usd)
 
-    # print("Sleeping for {} seconds".format(SLEEP_INTERVAL))
-    # time.sleep(SLEEP_INTERVAL)
+    print("Sleeping for {} seconds".format(SLEEP_INTERVAL))
+    time.sleep(SLEEP_INTERVAL)
