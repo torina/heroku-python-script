@@ -5,8 +5,7 @@ import os
 # import telegram
 from apscheduler.schedulers.blocking import BlockingScheduler
 
-# BOT_TOKEN = os.environ.get('BOT_TOKEN')
-BOT_TOKEN = "929958710:AAGXfScC4Egbh6_Fzh4JxWJ3K0ZXsaOXR7E"
+BOT_TOKEN = os.environ.get('BOT_TOKEN')
 
 # checking status every 2 hours
 SLEEP_INTERVAL = 7200
