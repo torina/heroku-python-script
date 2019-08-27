@@ -1,4 +1,4 @@
-time==3.7
+time==3.3
 requests==2.22.0
 os
 datetime==4.3
