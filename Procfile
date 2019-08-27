@@ -1,1 +1,2 @@
-web: python script.py
+# web: python script.py
+clock: python script.py
